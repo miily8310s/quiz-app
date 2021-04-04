@@ -16,3 +16,10 @@ export enum Difficulty {
   MEDIUM = 'medium',
   HARD = 'hard',
 }
+
+export interface UserAnswer {
+  question: string;
+  answer: string;
+  correct: boolean;
+  correctAnswer: string;
+}

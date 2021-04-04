@@ -1,9 +1,10 @@
 import React from 'react';
+import { UserAnswer } from '../types/question';
 interface Props {
   question: string;
   answers: string[];
   callback: any;
-  userAnswer: any;
+  userAnswer: Partial<UserAnswer> | undefined;
   questionNo: number;
   totalQuestions: number;
 }
@@ -23,7 +24,7 @@ const QuestionCard: React.FC<Props> = ({
     <p dangerouslySetInnerHTML={{ __html: question }}></p>
     {answers.map((answer) => (
       <div>
-        <button disabled={userAnswer} onClick={callback}>
+        <button disabled={userAnswer ? true : false} onClick={callback}>
           <span dangerouslySetInnerHTML={{ __html: answer }}></span>
         </button>
       </div>
