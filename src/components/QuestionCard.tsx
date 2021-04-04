@@ -3,7 +3,7 @@ import { UserAnswer } from '../types/question';
 interface Props {
   question: string;
   answers: string[];
-  callback: any;
+  callback: (e: React.MouseEvent<HTMLButtonElement>) => void;
   userAnswer: Partial<UserAnswer> | undefined;
   questionNo: number;
   totalQuestions: number;
@@ -23,8 +23,12 @@ const QuestionCard: React.FC<Props> = ({
     </p>
     <p dangerouslySetInnerHTML={{ __html: question }}></p>
     {answers.map((answer) => (
-      <div>
-        <button disabled={userAnswer ? true : false} onClick={callback}>
+      <div key={answer}>
+        <button
+          disabled={userAnswer ? true : false}
+          value={answer}
+          onClick={callback}
+        >
           <span dangerouslySetInnerHTML={{ __html: answer }}></span>
         </button>
       </div>
